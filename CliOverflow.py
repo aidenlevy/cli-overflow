@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 
 print("This is a CLI interface that pulls answered results given a user selected keyword")
 print("this has no api authentication so it is very limited")
+
 while True:
     print('Type the Tag you wish to search: ')
     j = input('> ')
