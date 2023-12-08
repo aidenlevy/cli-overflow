@@ -1,13 +1,13 @@
 import json
 import requests
 from bs4 import BeautifulSoup
-count = 1
 
 print("This is a CLI interface that pulls answered results given a user selected keyword")
 print("this has no api authentication so it is very limited")
 while True:
     print('Type the Tag you wish to search: ')
     j = input('> ')
+    count = 1
 
     # TODO: download the page using requests
     so_page = requests.get(f'https://api.stackexchange.com/2.3/search?order=desc&sort=activity&intitle={j}&site=stackoverflow&filter=withbody')
@@ -39,19 +39,3 @@ while True:
             if count == 50:
                 break
             count += 1
-
-
-
-    """soup = BeautifulSoup(so_page.content, 'html.parser')
-    # StackOverflow website, top 45 unanswered questions with python tags
-    # TODO: using BeautifulSoup, extract the following from the list of questions: title, user, text excerpt
-    post_list = soup.find_all('div', 's-post-summary--content')
-    for post in post_list:
-        title = post.h3.a.text.strip()
-        excerpt = post.div.text.strip()
-        user_card = post.find('div', 's-user-card--info')
-        user = user_card.div.a.text.strip()
-        try:
-            user = user_card.div.a.text.strip()
-        except AttributeError:
-            user = user_card.div.text.strip()"""
