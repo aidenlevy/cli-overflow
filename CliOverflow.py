@@ -10,7 +10,7 @@ while True:
     j = input('> ')
     count = 1
 
-    # TODO: download the page using requests
+#   Getting the page and parse the json format of responses
     so_page = requests.get(f'https://api.stackexchange.com/2.3/search?order=desc&sort=activity&intitle={j}&site=stackoverflow&filter=withbody')
     tj = json.loads(so_page.text)
     questions = tj["items"]
@@ -21,7 +21,7 @@ while True:
         qid = question["question_id"]
         viewcount = question["view_count"]
         answercount = question["answer_count"]
-    # body = question["body"]
+    # body = question["body"] for later
         answered = question["is_answered"]
         if answered:
             a = requests.get(f'https://api.stackexchange.com/2.3/questions/{qid}/answers?order=desc&sort=activity&site=stackoverflow')
